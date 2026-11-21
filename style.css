@@ -184,6 +184,8 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .contact { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 64px; border-top: 1px solid var(--line); }
 .contact a { padding: 18px 12px 0 0; font-size: 16px; font-weight: 500; }
 .contact a:hover { color: var(--acc); }
+.contact .ch { display: inline-flex; align-items: center; gap: 9px; font-weight: 500; }
+.contact .si { width: 18px; height: 18px; flex: none; }
 .contact span { display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; }
 .foot-logo { margin-top: 72px; color: var(--ink); }
 .foot-logo svg { width: 120px; height: 120px; margin-left: -4px; }
