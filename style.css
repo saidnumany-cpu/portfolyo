@@ -73,9 +73,10 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .w.sm { font-size: clamp(17px, 1.6vw, 26px); font-weight: 500; }
 .w.acc { color: var(--acc); }
 .w.mute { color: var(--mute); }
-.w.out { color: transparent; -webkit-text-stroke: 1.4px var(--outline); }
+/* SF'de harflerin iç parçaları üst üste biniyor; kontur önce çizilip üstü zemin rengiyle doldurulunca iç çizgiler kapanıyor */
+.w.out { color: var(--paper); -webkit-text-stroke: 2.8px var(--outline); paint-order: stroke fill; }
 .w:hover { color: var(--acc); -webkit-text-stroke-color: var(--acc); }
-.w.out:hover { color: transparent; }
+.w.out:hover { color: var(--paper); }
 @keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 @keyframes rise { from { opacity: 0; transform: translateY(24px); } }
 
