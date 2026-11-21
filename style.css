@@ -48,15 +48,23 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 /* hero */
 .hero { background: var(--ink); color: var(--paper); padding: 34px var(--pad) 72px; }
 .hero-top { display: flex; justify-content: space-between; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: #9C998F; padding-bottom: 14px; border-bottom: 1px solid #2E2D2A; }
-.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: end; margin-top: 56px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
 .hero h1 { font-size: clamp(64px, 10.5vw, 168px); line-height: .88; letter-spacing: -0.05em; }
 .hero h1 span { color: var(--acc); }
 .hero-txt p { margin-top: 28px; font-size: clamp(16px, 1.4vw, 19px); color: #B9B6AC; max-width: 520px; }
-.hero-art { display: flex; gap: 14px; justify-content: flex-end; align-items: flex-start; height: clamp(320px, 38vw, 560px); }
-.hero-art img { height: 100%; width: auto; min-width: 0; object-fit: contain; animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
-.hero-art img:nth-child(2) { height: 88%; margin-top: 12%; animation-delay: .1s; }
-.hero-art img:nth-child(3) { height: 76%; margin-top: 24%; animation-delay: .2s; }
-@keyframes rise { from { opacity: 0; transform: translateY(30px); } }
+.cloud { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 22px; padding: 10px 0; }
+.w { font-family: var(--disp); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; color: var(--paper); transition: color .25s, -webkit-text-stroke-color .25s; animation: fl 7s ease-in-out var(--d) infinite, rise .9s cubic-bezier(.2,.7,.2,1) both; display: inline-block; }
+.w.xl { font-size: clamp(40px, 4.6vw, 76px); }
+.w.lg { font-size: clamp(32px, 3.5vw, 58px); }
+.w.md { font-size: clamp(22px, 2.3vw, 38px); font-weight: 500; }
+.w.sm { font-size: clamp(17px, 1.6vw, 26px); font-weight: 500; }
+.w.acc { color: var(--acc); }
+.w.mute { color: #77746B; }
+.w.out { color: transparent; -webkit-text-stroke: 1.4px #CFCBC1; }
+.w:hover { color: var(--acc); -webkit-text-stroke-color: var(--acc); }
+.w.out:hover { color: transparent; }
+@keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
 
 /* sections */
 .section { padding: clamp(64px, 9vw, 128px) var(--pad); }
@@ -176,7 +184,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
 .reveal.in { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-art img { animation: none; } html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .w { animation: none; } html { scroll-behavior: auto; } }
 
 /* responsive */
 @media (max-width: 1100px) {
@@ -189,12 +197,11 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
   .nav nav { position: fixed; inset: 61px 0 auto 0; flex-direction: column; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px var(--pad) 18px; transform: translateY(-120%); transition: transform .3s; z-index: -1; }
   .nav.open nav { transform: none; }
   .nav nav a { padding: 12px 0; font-size: 18px; border-bottom: 1px solid var(--line); }
-  .nav .dl { display: none; }
   .menu { display: flex; margin-left: auto; }
   .nav.open .menu span:first-child { transform: translateY(4px) rotate(45deg); }
   .nav.open .menu span:last-child { transform: translateY(-4px) rotate(-45deg); }
   .hero-grid { grid-template-columns: 1fr; margin-top: 36px; }
-  .hero-art { justify-content: flex-start; height: 300px; order: -1; }
+  .cloud { justify-content: flex-start; gap: 4px 16px; }
   .sec-head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .apps { grid-template-columns: 1fr; }
   .about { grid-template-columns: 1fr; }
@@ -212,5 +219,4 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
   .erow { grid-template-columns: 1fr; gap: 8px; }
   .ey:empty { display: none; }
   .contact { grid-template-columns: 1fr 1fr; }
-  .hero-art { height: 240px; }
 }

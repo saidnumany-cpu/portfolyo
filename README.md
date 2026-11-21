@@ -10,7 +10,6 @@ Herhangi bir derleme adımı yok; düz HTML, CSS ve JavaScript. Vercel'e bağlan
 - `style.css` — tasarım sistemi ve duyarlı (mobil uyumlu) düzen
 - `main.js` — menü, kategori filtresi, görsel büyütme, kaydırma animasyonları
 - `img/` — WebP formatında çalışma görselleri
-- `Portfolyo_Said_Numan_Yucel_2026.pdf` — indirilebilir PDF portfolyo
 
 ## Lokal önizleme
 
