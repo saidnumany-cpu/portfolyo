@@ -268,3 +268,8 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 @media (max-width: 380px) {
   .lang span { padding: 5px 7px; }
 }
+@media (max-width: 860px) {
+  .nav { gap: 12px; }
+  .nav nav + .tools { margin-left: auto; gap: 8px; }
+  .menu { width: 40px; height: 40px; padding: 10px; margin-right: -10px; }
+}
