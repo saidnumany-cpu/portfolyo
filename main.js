@@ -37,7 +37,7 @@ const io = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // Aktif menü bağlantısı
-const links = [...document.querySelectorAll('.nav nav a')];
+const links = [...document.querySelectorAll('.nav nav a')].filter(a => a.getAttribute('href').startsWith('#'));
 const secs = links.map(a => document.querySelector(a.getAttribute('href')));
 const spy = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -51,15 +51,28 @@ const chips = document.querySelectorAll('.chip');
 chips.forEach(c => c.addEventListener('click', () => {
   chips.forEach(x => x.classList.toggle('on', x === c));
   const f = c.dataset.f;
-  document.querySelectorAll('.project').forEach(p => {
+  document.querySelectorAll('.project, .pcard').forEach(p => {
     const show = f === 'all' || p.dataset.cat === f;
     p.classList.toggle('hide', !show);
     if (show) p.classList.add('in');
   });
-  document.querySelectorAll('.index li').forEach(li => li.classList.toggle('hide', f !== 'all' && li.dataset.cat !== f));
+  const more = document.querySelector('.more');
+  if (more) more.hidden = ![...more.querySelectorAll('.pcard')].some(c => !c.classList.contains('hide'));
 }));
 
 // Görsel büyütme
+// Yıl ve sınıf kendiliğinden güncellensin (Eylül 2024 girişli, 4 yıllık)
+(() => {
+  const d = new Date(), y = d.getFullYear();
+  document.querySelectorAll('[data-year]').forEach(el => { el.textContent = y; });
+  const g = Math.min(4, Math.max(1, y - 2024 + (d.getMonth() >= 8 ? 1 : 0)));
+  const ord = ['first', 'second', 'third', 'fourth'][g - 1];
+  const suf = ['st', 'nd', 'rd', 'th'][g - 1];
+  document.querySelectorAll('[data-grade]').forEach(el => {
+    el.textContent = el.dataset.grade === 'word' ? ord + '-year' : document.documentElement.lang === 'en' ? g + suf + ' year' : g + '. sınıf';
+  });
+})();
+
 const lb = document.querySelector('.lightbox');
 const lbImg = lb.querySelector('img');
 const lbCap = lb.querySelector('.lb-cap');
