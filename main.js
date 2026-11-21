@@ -1,3 +1,23 @@
+// Tema
+const root = document.documentElement;
+document.querySelector('.theme').addEventListener('click', () => {
+  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  root.dataset.theme = next;
+  try { localStorage.setItem('theme', next); } catch (e) {}
+});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  let saved = null; try { saved = localStorage.getItem('theme'); } catch (_) {}
+  if (!saved) root.dataset.theme = e.matches ? 'dark' : 'light';
+});
+
+// Dil: bulunulan bölümü koruyarak geçiş
+const lang = document.querySelector('.lang');
+lang.addEventListener('click', e => {
+  e.preventDefault();
+  try { localStorage.setItem('lang', lang.dataset.lang); } catch (_) {}
+  location.href = lang.getAttribute('href') + (location.hash || '');
+});
+
 // Mobil menü
 const nav = document.querySelector('.nav');
 const menuBtn = document.querySelector('.menu');
