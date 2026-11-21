@@ -49,17 +49,11 @@
   .v-txt .pill.ghost { background: var(--paper); }
   .v-txt .pill.ghost:hover { background: var(--ink); }
 
-  /* içine çekilen kelimeler */
-  .debris { position: absolute; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
-  .debris span { position: absolute; left: 0; top: 0; white-space: nowrap; font-family: var(--disp); font-weight: 600; letter-spacing: -0.02em; color: var(--mute); will-change: transform, opacity; }
-  .debris span.acc { color: var(--acc); }
-
   .v-foot { position: relative; z-index: 3; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--mute); }
 
   @media (max-width: 640px) { .v-code { font-size: 27vw; } }
   @media (prefers-reduced-motion: reduce) {
     .v-code .d, .void .ring { animation: none; }
-    .debris { display: none; }
   }
 </style>
 </head>
@@ -83,7 +77,6 @@
   </header>
 
   <main class="v-stage" id="main">
-    <div class="debris" aria-hidden="true"></div>
     <div>
       <div class="v-code" aria-label="404"><span class="d" aria-hidden="true">4</span><span class="void" aria-hidden="true"><span class="ring r2"></span><span class="ring"></span><span class="core"></span></span><span class="d" aria-hidden="true">4</span></div>
       <div class="v-txt">
@@ -126,56 +119,6 @@
 
   // İstenen adres, üstü çizili
   document.querySelector('.v-path s').textContent = decodeURIComponent(location.pathname + location.search);
-
-  // Boşluğa çekilen kelimeler
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var words = en
-    ? ['Magazine', 'Typography', 'Poster', 'Identity', 'Book Cover', 'Video', 'Brochure', 'Monogram', 'Album Cover', 'Calligraphy', 'Animation', 'Business Card', 'Web']
-    : ['Dergi', 'Tipografi', 'Afiş', 'Kimlik', 'Kitap Kapağı', 'Video', 'Broşür', 'Monogram', 'Albüm Kapağı', 'Kaligrafi', 'Animasyon', 'Kartvizit', 'Web'];
-  var box = document.querySelector('.debris');
-  var hole = document.querySelector('.void .core');
-  var N = innerWidth < 640 ? 8 : 13, parts = [];
-
-  function spawn(p, fresh) {
-    var w = box.clientWidth, h = box.clientHeight;
-    p.r = Math.hypot(w, h) * (0.32 + Math.random() * 0.3);
-    p.a = Math.random() * Math.PI * 2;
-    p.v = 0.0016 + Math.random() * 0.0022;          // açısal hız
-    p.fall = 0.18 + Math.random() * 0.3;            // içeri düşme hızı
-    p.size = 13 + Math.random() * 20;
-    p.r0 = p.r;
-    if (fresh) p.r *= 0.35 + Math.random() * 0.65;  // ilk karede ekrana dağıt
-    p.el.textContent = words[(Math.random() * words.length) | 0];
-    p.el.className = Math.random() < 0.18 ? 'acc' : '';
-    p.el.style.fontSize = p.size + 'px';
-  }
-  for (var i = 0; i < N; i++) {
-    var el = document.createElement('span');
-    box.appendChild(el);
-    var p = { el: el }; spawn(p, true); parts.push(p);
-  }
-
-  var last = performance.now();
-  function tick(now) {
-    var dt = Math.min(48, now - last); last = now;
-    var b = box.getBoundingClientRect(), c = hole.getBoundingClientRect();
-    var cx = c.left + c.width / 2 - b.left, cy = c.top + c.height / 2 - b.top;
-    var horizon = c.width * 0.5;
-    for (var i = 0; i < parts.length; i++) {
-      var p = parts[i];
-      var k = Math.max(0.08, p.r / p.r0);           // yaklaştıkça hızlanır
-      p.a += p.v * dt / k;
-      p.r -= p.fall * dt * (1.6 - k);
-      if (p.r <= horizon) { spawn(p, false); continue; }
-      var x = cx + Math.cos(p.a) * p.r, y = cy + Math.sin(p.a) * p.r * 0.62;
-      var s = Math.max(0.05, Math.min(1, (p.r - horizon) / (p.r0 * 0.55)));
-      var o = Math.min(1, (p.r0 - p.r) / 80) * Math.min(1, s * 1.6) * 0.55;
-      p.el.style.opacity = o;
-      p.el.style.transform = 'translate(' + x + 'px,' + y + 'px) translate(-50%,-50%) rotate(' + (p.a + Math.PI / 2) + 'rad) scale(' + s + ',' + (s * (0.5 + 0.5 * s)) + ')';
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 })();
 </script>
 </body>
