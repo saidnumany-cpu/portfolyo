@@ -65,20 +65,17 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .hero h1.name { font-family: 'ArchivoX', var(--disp); font-weight: 800; font-stretch: 125%; font-size: clamp(42px, 5.9vw, 98px); line-height: .94; letter-spacing: -0.025em; text-align: left; }
 .hero h1.name .dot { color: var(--acc); }
 .hero-txt p { margin-top: 28px; font-size: clamp(16px, 1.4vw, 19px); color: var(--ink2); max-width: 520px; }
-.cloud { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 22px; padding: 10px 0; }
-.w { font-family: var(--disp); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; color: var(--ink); transition: color .25s, -webkit-text-stroke-color .25s; animation: fl 7s ease-in-out var(--d) infinite, rise .9s cubic-bezier(.2,.7,.2,1) both; display: inline-block; }
-.w.xl { font-size: clamp(40px, 4.6vw, 76px); }
-.w.lg { font-size: clamp(32px, 3.5vw, 58px); }
-.w.md { font-size: clamp(22px, 2.3vw, 38px); font-weight: 500; }
-.w.sm { font-size: clamp(17px, 1.6vw, 26px); font-weight: 500; }
+/* kelime bulutu: kelimeler kutu genişliğine göre ölçeklenir (cqi), konumlar tools/cloud.py ile hesaplandı */
+.cloud { position: relative; width: 100%; aspect-ratio: 5 / 4; container-type: inline-size; }
+.w { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; font-size: calc(var(--s) * 1cqi); white-space: nowrap; font-family: var(--disp); font-weight: 600; letter-spacing: -0.035em; line-height: 1; color: var(--ink); transition: color .25s, -webkit-text-stroke-color .25s; animation: drift var(--t, 8s) ease-in-out var(--d, 0s) infinite alternate, rise 1s cubic-bezier(.2,.7,.2,1) both; }
 .w.acc { color: var(--acc); }
-.w.mute { color: var(--mute); }
+.w.mute { color: var(--mute); font-weight: 500; }
 /* SF'de harflerin iç parçaları üst üste biniyor; kontur önce çizilip üstü zemin rengiyle doldurulunca iç çizgiler kapanıyor */
-.w.out { color: var(--paper); -webkit-text-stroke: 2.8px var(--outline); paint-order: stroke fill; }
-.w:hover { color: var(--acc); -webkit-text-stroke-color: var(--acc); }
+.w.out { color: var(--paper); -webkit-text-stroke: max(1.6px, .05em) var(--outline); paint-order: stroke fill; }
+.w:hover { color: var(--acc); -webkit-text-stroke-color: var(--acc); z-index: 1; }
 .w.out:hover { color: var(--paper); }
-@keyframes fl { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+@keyframes drift { 0% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(calc(var(--dx) * .6), var(--dy)) rotate(.6deg); } 100% { transform: translate(var(--dx), calc(var(--dy) * -.4)) rotate(-.4deg); } }
+@keyframes rise { from { opacity: 0; } }
 
 /* sections */
 .section { padding: clamp(64px, 9vw, 128px) var(--pad); }
@@ -220,7 +217,6 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
   .nav.open .menu span:first-child { transform: translateY(4px) rotate(45deg); }
   .nav.open .menu span:last-child { transform: translateY(-4px) rotate(-45deg); }
   .hero-grid { grid-template-columns: 1fr; margin-top: 36px; }
-  .cloud { justify-content: flex-start; gap: 4px 16px; }
   .sec-head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .apps { grid-template-columns: 1fr; }
   .ig { grid-template-columns: 1fr; }
@@ -283,7 +279,6 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .status { display: inline-flex; align-items: center; gap: 10px; font-size: 13.5px; font-weight: 500; color: var(--ink2); padding: 7px 14px 7px 12px; border: 1px solid var(--line); border-radius: 100px; margin-bottom: 26px; }
 .dotlive { width: 8px; height: 8px; border-radius: 50%; background: #1FA15A; box-shadow: 0 0 0 0 rgba(31,161,90,.5); animation: live 2.4s ease-out infinite; }
 @keyframes live { 0% { box-shadow: 0 0 0 0 rgba(31,161,90,.45); } 70%, 100% { box-shadow: 0 0 0 9px rgba(31,161,90,0); } }
-.cloud { gap: 10px 28px; }
 
 /* diğer çalışmalar ızgarası */
 .more { border-top: 1.5px solid var(--ink); margin-top: clamp(24px, 4vw, 48px); padding-top: clamp(28px, 4vw, 48px); }

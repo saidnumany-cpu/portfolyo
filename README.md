@@ -14,6 +14,15 @@ Herhangi bir derleme adımı yok; düz HTML, CSS ve JavaScript. Vercel'e bağlan
 - `main.js` — menü, kategori filtresi, görsel büyütme, kaydırma animasyonları
 - `img/` — WebP formatında çalışma görselleri
 
+## Kelime bulutu
+
+Hero'daki kelimelerin konumları `tools/cloud.py` ile hesaplandı (kelimeleri ölçer, çakışmadan dağıtır, `index.html` ve `en/index.html` içine yazar). Kelime eklemek/çıkarmak için dosyanın başındaki `WORDS` listesini düzenle, sonra yerel sunucu açıkken çalıştır:
+
+```bash
+npx serve . -l 8765   # ya da: python3 -m http.server 8765
+python3 tools/cloud.py 2 2   # sayılar: TR ve EN için farklı dağılım tohumları
+```
+
 ## Lokal önizleme
 
 ```bash
