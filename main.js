@@ -77,3 +77,11 @@ document.querySelectorAll('.zoom').forEach(b => b.addEventListener('click', () =
 const closeLb = () => { lb.hidden = true; document.body.style.overflow = ''; lastFocus && lastFocus.focus(); };
 lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lb.hidden) closeLb(); });
+
+// Başa dön: #top yapışkan başlıkta olduğu için tarayıcı kaydırmıyor; elle en başa kaydır
+document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  history.replaceState(null, '', location.pathname + location.search);
+}));
