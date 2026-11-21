@@ -36,8 +36,10 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 
 /* nav */
 .nav { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 32px; padding: 14px var(--pad); background: rgba(244,242,237,.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-.brand { font-family: var(--disp); font-weight: 600; font-size: 18px; letter-spacing: -0.02em; }
-.brand span { color: var(--acc); }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--disp); font-weight: 600; font-size: 18px; letter-spacing: -0.03em; }
+.brand svg { width: 40px; height: 40px; margin: -6px 0; }
+.brand .bt { padding-left: 12px; border-left: 1px solid var(--line); }
+.brand:hover svg { color: var(--acc); }
 .nav nav { display: flex; gap: 26px; margin-left: auto; font-size: 14.5px; font-weight: 500; }
 .nav nav a { color: var(--ink2); position: relative; }
 .nav nav a:hover, .nav nav a.on { color: var(--ink); }
@@ -167,11 +169,13 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .footer h2 { font-size: clamp(48px, 8vw, 120px); letter-spacing: -0.045em; }
 .mail { display: inline-flex; gap: 14px; margin-top: 28px; font-family: var(--disp); font-size: clamp(22px, 3vw, 40px); font-weight: 500; border-bottom: 2px solid var(--acc); padding-bottom: 4px; }
 .mail span { color: var(--acc); }
-.contact { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 64px; border-top: 1px solid #2E2D2A; }
+.contact { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 64px; border-top: 1px solid #2E2D2A; }
 .contact a { padding: 18px 12px 0 0; font-size: 16px; font-weight: 500; }
 .contact a:hover { color: var(--acc); }
 .contact span { display: block; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: #8C897F; margin-bottom: 6px; }
-.foot-bottom { display: flex; justify-content: space-between; margin-top: 72px; font-size: 13px; color: #8C897F; }
+.foot-logo { margin-top: 72px; color: var(--paper); }
+.foot-logo svg { width: 120px; height: 120px; margin-left: -4px; }
+.foot-bottom { display: flex; justify-content: space-between; margin-top: 24px; font-size: 13px; color: #8C897F; }
 
 /* lightbox */
 .lightbox { position: fixed; inset: 0; z-index: 100; background: rgba(12,12,11,.94); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; }
