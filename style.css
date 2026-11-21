@@ -5,14 +5,14 @@
 @font-face { font-family: 'IDisp'; src: url('/fonts/InterDisplay-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
 
 :root {
-  --paper: #F4F2ED; --panel: #E7E3DA; --alt: #ECE9E2; --ink: #111110; --ink2: #3A3934; --mute: #6E6B64; --line: #D3CEC4; --acc: #E8461E;
+  --paper: #F4F2ED; --panel: #E7E3DA; --alt: #ECE9E2; --ink: #111110; --ink2: #3A3934; --mute: #6E6B64; --line: #D3CEC4; --acc: #2350F0;
   --navbg: rgba(244,242,237,.86); --dark: #111110; --onDark: #F4F2ED; --shadow: rgba(0,0,0,.12);
   color-scheme: light;
   --pad: clamp(20px, 4.4vw, 64px);
   --disp: 'IDisp', 'Inter', system-ui, sans-serif;
 }
 [data-theme="dark"] {
-  --paper: #121211; --panel: #1C1C1A; --alt: #171716; --ink: #EEEBE4; --ink2: #BDB9B0; --mute: #8D897F; --line: #2D2C29; --acc: #F0542C;
+  --paper: #121211; --panel: #1C1C1A; --alt: #171716; --ink: #EEEBE4; --ink2: #BDB9B0; --mute: #8D897F; --line: #2D2C29; --acc: #6F8CFF;
   --navbg: rgba(18,18,17,.82); --dark: #0A0A09; --onDark: #F4F2ED; --shadow: rgba(0,0,0,.45);
   color-scheme: dark;
 }
@@ -57,6 +57,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .menu span { display: block; height: 2px; background: var(--ink); transition: transform .25s; }
 
 /* hero */
+.hero, .footer { --acc: #6F8CFF; }
 .hero { background: var(--dark); color: var(--onDark); padding: 34px var(--pad) 72px; }
 .hero-top { display: flex; justify-content: space-between; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: #9C998F; padding-bottom: 14px; border-bottom: 1px solid #2E2D2A; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
@@ -158,7 +159,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 
 /* about */
 .about { display: grid; grid-template-columns: minmax(280px, 0.8fr) 1.4fr; gap: clamp(32px, 5vw, 80px); align-items: start; border-top: 1px solid var(--line); }
-.ab-photo { background: var(--acc); aspect-ratio: 4/5; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; position: sticky; top: 96px; }
+.ab-photo { background: #2350F0; aspect-ratio: 4/5; display: flex; align-items: flex-end; justify-content: center; overflow: hidden; position: sticky; top: 96px; }
 .ab-photo img { height: 94%; width: auto; object-fit: contain; }
 .ab-txt .lead { font-size: clamp(32px, 3.8vw, 54px); margin-bottom: 26px; }
 .ab-txt > p { color: var(--ink2); font-size: 16.5px; line-height: 1.65; margin-bottom: 14px; max-width: 720px; }
