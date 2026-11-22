@@ -347,11 +347,13 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .p-vis.expo figure:first-child { grid-column: 1 / -1; justify-self: center; max-width: 560px; width: 100%; }
 .p-vis.expo img { width: 100%; box-shadow: 0 10px 28px var(--shadow); }
 .p-vis.expo figure:not(:first-child) img { aspect-ratio: 9 / 16; object-fit: cover; }
+.p-vis.expo.n4 { grid-template-columns: repeat(4, 1fr); }
 @media (max-width: 860px) {
   .xrow { grid-template-columns: 28px 1fr auto; gap: 0 14px; }
   .xk { display: none; }
 }
 @media (max-width: 600px) {
   .p-vis.expo { grid-template-columns: 1fr 1fr; }
-  .p-vis.expo figure:last-child { grid-column: 1 / -1; justify-self: center; width: 60%; }
+  .p-vis.expo.n4 { grid-template-columns: 1fr 1fr; }
+  .p-vis.expo.n3 figure:last-child { grid-column: 1 / -1; justify-self: center; width: 60%; }
 }
