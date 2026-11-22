@@ -32,6 +32,8 @@
   /* boşluk: ortadaki "0" */
   .void { position: relative; width: .78em; height: .78em; flex: none; }
   .void .core { position: absolute; inset: 14%; border-radius: 50%; background: #000; box-shadow: 0 0 0 2px var(--acc), 0 0 60px 6px color-mix(in srgb, var(--acc) 35%, transparent); }
+  .void .core svg { display: block; width: 100%; height: 100%; fill: #000; }
+  .void .core[data-heat] { background: transparent; }
   .void .ring { position: absolute; inset: -6%; border-radius: 50%;
     background: conic-gradient(from 0deg, transparent 0 20%, var(--acc) 32%, transparent 48%, transparent 62%, var(--ink) 74%, transparent 88%);
     -webkit-mask: radial-gradient(circle, transparent 52%, #000 54%, #000 62%, transparent 70%); mask: radial-gradient(circle, transparent 52%, #000 54%, #000 62%, transparent 70%);
@@ -79,7 +81,7 @@
 
   <main class="v-stage" id="main">
     <div>
-      <div class="v-code" aria-label="404"><span class="d" aria-hidden="true">4</span><span class="void" aria-hidden="true"><span class="ring r2"></span><span class="ring"></span><span class="core"></span></span><span class="d" aria-hidden="true">4</span></div>
+      <div class="v-code" aria-label="404"><span class="d" data-heat="1.6" aria-hidden="true">4</span><span class="void" aria-hidden="true"><span class="ring r2"></span><span class="ring"></span><span class="core" data-heat="1.8"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg></span></span><span class="d" data-heat="1.6" aria-hidden="true">4</span></div>
       <div class="v-txt">
         <h1 data-tr="Bu sayfa boşluğa düştü." data-en="This page fell into the void.">Bu sayfa boşluğa düştü.</h1>
         <p data-tr="Aradığın şey ya hiç var olmadı ya da çoktan içeri çekildi. Merak etme, geri kalan her şey yerinde." data-en="Whatever you were looking for either never existed or got pulled in long ago. Don't worry — everything else is still here.">Aradığın şey ya hiç var olmadı ya da çoktan içeri çekildi. Merak etme, geri kalan her şey yerinde.</p>

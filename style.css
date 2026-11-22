@@ -368,3 +368,15 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .p-vis.dzc img { width: 100%; box-shadow: 0 10px 28px var(--shadow); }
 .p-vis.dzc figure:nth-child(n+3) img { max-height: 420px; object-fit: contain; box-shadow: none; }
 .p-note { font-size: 13px; color: var(--mute); margin-top: 14px; }
+
+/* açılış: ısınan logo (oturum başına bir kez, ana sayfa) */
+html.intro body::after { content: ''; position: fixed; inset: 0; z-index: 199; background: var(--paper); animation: introSafe .01s 3s forwards; }
+html.intro-ready body::after { display: none; }
+@keyframes introSafe { to { opacity: 0; visibility: hidden; } }
+.intro-ov { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: var(--paper); color: var(--ink); transition: opacity .6s ease, visibility .6s; }
+.intro-ov.out { opacity: 0; visibility: hidden; }
+.intro-logo { width: min(36vmin, 240px); aspect-ratio: 1; }
+.intro-logo svg { display: block; width: 100%; height: 100%; }
+.intro-ov.go .intro-logo { animation: introIn 1.3s cubic-bezier(.2,.7,.2,1) both; }
+.intro-ov.out .intro-logo { transform: scale(1.04); transition: transform .6s ease; }
+@keyframes introIn { from { opacity: 0; transform: scale(.94); } }
