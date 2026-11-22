@@ -386,3 +386,7 @@ html.intro-ready body::after { display: none; }
 /* ısı haritası çizgileri: akan gradyan */
 @keyframes heatflow { to { background-position-x: 600px; } }
 @media (prefers-reduced-motion: reduce) { .mail, .nav nav a.on::after { animation: none; } }
+
+/* sosyal medya ikonları: akan ısı gradyanı (yoksa yazı rengi) */
+.contact .si { fill: url(#heat-d) var(--ink); }
+[data-theme="light"] .contact .si { fill: url(#heat-l) var(--ink); }

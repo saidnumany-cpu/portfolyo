@@ -221,7 +221,23 @@ void main(){
     }, 1500);
   }
 
+  // Küçük ikonlar için hafif yol: WebGL yerine ortak, akan bir SVG gradyanı (CSS: fill:url(#heat-d))
+  function iconGradients() {
+    if (!document.querySelector('.si') || document.getElementById('heat-d')) return;
+    const stops = l => [['#2A1BD6', 0], ['#7F2AF2', .3], ['#ED3D9E', .55], [l ? '#FF6A3D' : '#FF8A52', .78], [l ? '#FF9A3C' : '#FFE2B8', 1]]
+      .map(([c, o]) => `<stop offset="${o}" stop-color="${c}"/>`).join('');
+    const grad = (id, l) => `<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="0" spreadMethod="reflect" gradientTransform="rotate(35 .5 .5)">${stops(l)}
+      <animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="2 0" dur="7s" repeatCount="indefinite" additive="sum"/></linearGradient>`;
+    const d = document.createElement('div');
+    d.innerHTML = `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>${grad('heat-d', 0)}${grad('heat-l', 1)}</defs></svg>`;
+    const svg = d.firstChild;
+    document.body.appendChild(svg);
+    const sync = () => still.matches ? svg.pauseAnimations() : svg.unpauseAnimations();
+    sync(); still.addEventListener('change', sync);
+  }
+
   const run = () => {
+    iconGradients();
     intro();
     document.querySelectorAll('[data-heat]').forEach(el => {
       if (el.querySelector('svg')) heat(el);
