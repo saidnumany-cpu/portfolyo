@@ -36,3 +36,7 @@ npx serve .
 2. Ana sayfaya ızgara kartı ekle (`<a class="pcard" ...>`) ya da öne çıkanlardan biriyle yer değiştir.
 3. Önceki / Sonraki bağlantılarını ve `sitemap.xml`'i güncelle.
 4. Görsellere `width` ve `height` ekle (sayfa yüklenirken zıplamasın diye).
+
+## Tema: Baskı İndeksi (deneme)
+
+`theme-baski.css`, `style.css`'in üzerine giyilen bir kaplama: krem kâğıt zemin, dar ve büyük harfli Archivo başlıklar, JetBrains Mono künye yazıları, sinyal turuncusu vurgu. Kaldırmak için tüm HTML dosyalarındaki `<link rel="stylesheet" href="/theme-baski.css">` satırını silmek (ya da bu dalı birleştirmemek) yeterli.

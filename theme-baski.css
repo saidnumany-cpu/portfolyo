@@ -1,0 +1,101 @@
+/* =========================================================
+   Tema: "Baskı İndeksi"
+   style.css'in üzerine giyilen kaplama. Kaldırmak için HTML'lerdeki
+   <link rel="stylesheet" href="/theme-baski.css"> satırını silmek yeterli.
+   ========================================================= */
+
+@font-face { font-family: 'JBMono'; src: url('/fonts/JetBrainsMono-latin.woff2') format('woff2'); font-weight: 100 800; font-display: swap;
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'JBMono'; src: url('/fonts/JetBrainsMono-latin-ext.woff2') format('woff2'); font-weight: 100 800; font-display: swap;
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+
+:root {
+  --paper: #F2F0EB; --panel: #E6E2D9; --alt: #EAE7E0; --ink: #111110; --ink2: #2E2D29; --mute: #5C5A55;
+  --line: #111110; --acc: #C23800; --sig: #FF4F00; --onSig: #111110;
+  --navbg: rgba(242,240,235,.92); --outline: #111110;
+  --disp: 'ArchivoX', -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  --mono: 'JBMono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+[data-theme="dark"] {
+  --paper: #111110; --panel: #1C1C1A; --alt: #171716; --ink: #F2F0EB; --ink2: #CFCBC2; --mute: #9A968C;
+  --line: #4A4843; --acc: #FF6A2B; --sig: #FF4F00; --onSig: #111110;
+  --navbg: rgba(17,17,16,.9); --outline: #CFCBC1;
+}
+
+/* --- başlıklar: dar, kalın, büyük harf --- */
+h1, h2, h3 { font-family: var(--disp); font-weight: 800; font-stretch: 74%; text-transform: uppercase; letter-spacing: -0.02em; line-height: .92; }
+.hero h1.name { font-stretch: 70%; font-size: clamp(60px, 9vw, 156px); line-height: .9; padding-top: .08em; letter-spacing: -0.03em; text-transform: uppercase; }
+.hero h1.name .dot { color: var(--sig); }
+.sec-head h2 { font-size: clamp(48px, 7vw, 108px); line-height: .94; padding-top: .1em; }
+/* sanatçı ve eser adları büyük harfe çevrilmesin (Esdeekid → ESDEEKİD olmasın) */
+.vt { text-transform: none; }
+.ab-txt .lead { text-transform: none; font-weight: 700; font-stretch: 88%; line-height: 1.02; letter-spacing: -0.03em; }
+.ab-grid h3, .x-works { font-family: var(--mono); font-stretch: 100%; font-weight: 500; letter-spacing: .04em; font-size: 12px; line-height: 1.4; }
+.pc-t, .vt, .xt, .pn-t, .erow h4 { font-family: var(--disp); font-weight: 750; font-stretch: 78%; text-transform: uppercase; letter-spacing: -0.015em; }
+.pc-t { font-size: 21px; line-height: 1.05; }
+.brand { font-stretch: 90%; }
+
+/* --- künye bilgileri: mono --- */
+.eyebrow, .hero-top, .status, .p-num, .pc-n, .pc-c, .vn, .vk, .vl, .xk, .ey, .er, .crumb, .crumb span, .pn-l,
+.contact span, .foot-bottom, .stack span, .meta, .lang, .chip, .sec-head p, .more-head p, figcaption, .lb-cap, .p-note {
+  font-family: var(--mono);
+}
+.eyebrow { font-weight: 500; letter-spacing: .04em; font-size: 12.5px; }
+.hero-top { letter-spacing: .04em; font-size: 12.5px; border-bottom: 1.5px solid var(--line); }
+.sec-head p, .more-head p { font-size: 13.5px; line-height: 1.55; }
+.p-num { font-size: 13px; }
+.meta { font-size: 12.5px; }
+.stack span { border-radius: 0; border: 1px solid var(--line); background: transparent; }
+.nav nav { font-family: var(--mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: .04em; }
+.nav nav a.on::after { background: var(--sig); height: 3px; }
+.nav { border-bottom: 1.5px solid var(--line); }
+
+/* --- düğmeler: köşeli, mono --- */
+.pill { border-radius: 0; font-family: var(--mono); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: .02em; min-height: 44px; padding: 10px 18px; }
+.pill.sm { min-height: 36px; padding: 6px 12px; font-size: 12px; }
+.pill .arr { color: var(--sig); }
+.pill.ghost .arr { color: inherit; }
+.chip { font-size: 12.5px; text-transform: uppercase; letter-spacing: .03em; border: 1.5px solid var(--ink); color: var(--ink); min-height: 40px; }
+.status { border-radius: 0; border-color: var(--line); font-size: 12.5px; }
+.dotlive { background: var(--sig); animation-name: live-sig; }
+@keyframes live-sig { 0% { box-shadow: 0 0 0 0 rgba(255,79,0,.5); } 70%, 100% { box-shadow: 0 0 0 9px rgba(255,79,0,0); } }
+.lang, .theme { border-radius: 0; border-color: var(--line); }
+.lang span { border-radius: 0; }
+
+/* kelime bulutu konumları SF ile ölçüldü; orijinal yazı tipinde kalsın */
+.w { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'IDisp', 'Inter', system-ui, sans-serif; font-stretch: 100%; text-transform: none; }
+.w.acc { color: var(--acc); }
+
+/* --- çizgiler daha belirgin --- */
+.sec-head, .more, .exp, .pnav { border-top-color: var(--line); border-bottom-color: var(--line); }
+.sec-head { border-bottom-width: 1.5px; }
+.project { border-top: 1.5px solid var(--line); }
+.app { border: 1.5px solid var(--line); }
+.p-vis { border: 1px solid var(--line); }
+.p-vis.dark { border-color: #111110; }
+.pc-img, .vthumb, .xthumb { border-radius: 0; }
+
+/* --- liste satırları: üzerine gelince sinyal rengine boyanır --- */
+.vrow, .xrow { border-bottom: 1.5px solid var(--line); }
+.vlist, .xlist { border-top: 0; }
+.vrow:hover, .xrow:hover, .vrow:focus-visible, .xrow:focus-visible { background: var(--sig); color: var(--onSig); }
+.vrow:hover *, .xrow:hover *, .vrow:focus-visible *, .xrow:focus-visible * { color: var(--onSig); }
+.pn:hover { background: var(--sig); color: var(--onSig); }
+.pn:hover .pn-t, .pn:hover .pn-l { color: var(--onSig); }
+.pcard:hover .pc-t, .pcard:focus-visible .pc-t { color: var(--acc); }
+.pcard:hover .pc-img { outline: 3px solid var(--sig); outline-offset: 0; }
+.feats li::before { background: var(--sig); border-radius: 0; }
+
+/* --- iletişim: sinyal turuncusu blok (iki temada da aynı) --- */
+.footer {
+  --ink: #111110; --ink2: #111110; --mute: #111110; --line: #111110; --acc: #111110; --paper: #FF4F00; --outline: #111110;
+  background: var(--sig); color: #111110; border-top: 1.5px solid #111110;
+}
+.footer h2 { font-size: clamp(60px, 11vw, 176px); letter-spacing: -0.03em; font-stretch: 70%; line-height: .92; padding-top: .14em; }
+.footer .mail { font-family: var(--mono); font-weight: 500; font-size: clamp(18px, 2.4vw, 30px); border-bottom-color: #111110; }
+.footer .mail span { color: #111110; }
+.footer .contact { border-top: 1.5px solid #111110; }
+.footer .contact a:hover { color: #111110; text-decoration: underline; text-underline-offset: 4px; }
+.footer .pill .arr { color: inherit; }
+.footer :focus-visible { outline-color: #111110; }
+.footer .eyebrow { color: #111110; }
