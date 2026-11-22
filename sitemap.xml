@@ -224,4 +224,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.voidbysaid.studio/en/calismalar/tipogram"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voidbysaid.studio/calismalar/tipogram"/>
   </url>
+  <url>
+    <loc>https://www.voidbysaid.studio/sergiler/3-nokta</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.voidbysaid.studio/sergiler/3-nokta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.voidbysaid.studio/en/sergiler/3-nokta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voidbysaid.studio/sergiler/3-nokta"/>
+  </url>
+  <url>
+    <loc>https://www.voidbysaid.studio/en/sergiler/3-nokta</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.voidbysaid.studio/sergiler/3-nokta"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.voidbysaid.studio/en/sergiler/3-nokta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voidbysaid.studio/sergiler/3-nokta"/>
+  </url>
 </urlset>

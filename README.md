@@ -8,6 +8,7 @@ Herhangi bir derleme adımı yok; düz HTML, CSS ve JavaScript. Vercel'e bağlan
 
 - `index.html` / `en/index.html` — ana sayfa (TR / EN). Çalışmalar bölümünde 5 öne çıkan iş tam boy, kalanlar "Diğer çalışmalar" ızgarasında
 - `calismalar/<proje>.html` / `en/calismalar/<proje>.html` — her projenin kendi sayfası (adres: `/calismalar/<proje>`)
+- `sergiler/<sergi>.html` / `en/sergiler/<sergi>.html` — sergi sayfaları; ana sayfadaki "Sergiler" listesinden bağlanır
 - `404.html` — bulunamayan sayfa
 - `sitemap.xml`, `robots.txt` — Google için; yeni proje sayfası eklersen site haritasına da ekle
 - `style.css` — tasarım sistemi ve duyarlı (mobil uyumlu) düzen
