@@ -252,18 +252,4 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.voidbysaid.studio/en/sergiler/gitciler-101"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voidbysaid.studio/sergiler/gitciler-101"/>
   </url>
-  <url>
-    <loc>https://www.voidbysaid.studio/playground</loc>
-    <lastmod>2026-11-22</lastmod>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.voidbysaid.studio/playground"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.voidbysaid.studio/en/playground"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voidbysaid.studio/playground"/>
-  </url>
-  <url>
-    <loc>https://www.voidbysaid.studio/en/playground</loc>
-    <lastmod>2026-11-22</lastmod>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.voidbysaid.studio/playground"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.voidbysaid.studio/en/playground"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.voidbysaid.studio/playground"/>
-  </url>
 </urlset>
