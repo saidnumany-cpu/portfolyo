@@ -13,21 +13,25 @@ float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
 float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<4;i++){s+=a*n(p);p*=2.03;a*=.5;}return s;}
 vec3 pal(float x){x=clamp(x,0.,1.);
  vec3 c0=vec3(.05,.02,.16),c1=vec3(.16,.10,.86),c2=vec3(.50,.16,.95),c3=vec3(.93,.24,.62);
- vec3 c4=mix(vec3(1.,.50,.28),vec3(.98,.30,.42),lt),c5=mix(vec3(1.,.94,.74),vec3(1.,.47,.22),lt);
+ vec3 c4=mix(vec3(1.,.50,.28),vec3(.98,.30,.42),lt),c5=mix(vec3(1.,.86,.66),vec3(1.,.50,.26),lt);
  if(x<.2)return mix(c0,c1,x/.2);if(x<.4)return mix(c1,c2,(x-.2)/.2);
  if(x<.6)return mix(c2,c3,(x-.4)/.2);if(x<.8)return mix(c3,c4,(x-.6)/.2);return mix(c4,c5,(x-.8)/.2);}
 vec3 hue(vec3 c,float a){vec3 k=vec3(.57735);float co=cos(a);
  return c*co+cross(k,c)*sin(a)+k*dot(k,c)*(1.-co);}
 void main(){
- vec4 s=texture2D(m,uv);float a=s.r,g=s.g;
+ vec4 s=texture2D(m,uv);float a=s.r;
  vec2 q=vec2(uv.x*as,uv.y);
- float w=fbm(q*2.4+vec2(t*.07,-t*.05));
- float sweep=.5+.5*sin((q.x*1.2-q.y)*4.6-t*1.05+w*4.);
- float rim=clamp((1.-g)*2.3,0.,1.);
- float heat=.36+rim*mix(.78,.68,lt);
- heat*=.5+.7*sweep;
- heat+=(w-.5)*.14;
- vec3 col=hue(pal(heat),(sin(t*.21)*.6+(w-.5)*.7)*mix(1.,.4,lt));
+ float w=fbm(q*1.8+vec2(t*.05,-t*.04));
+ // geniş, yavaş akan sıcaklık alanı
+ float f=.5+.5*sin((q.x*.9-q.y*.75)*4.3-t*.6+w*3.2);
+ f=f*f*(3.-2.*f);
+ // kenara yakınlık: iki ölçekte yumuşak geçiş (keskin çizgi yok)
+ float e2=smoothstep(0.,1.,clamp((1.-s.g)*1.45,0.,1.));
+ float e1=smoothstep(.15,1.,clamp((1.-s.b)*1.9,0.,1.));
+ float edge=e2*.7+e1*.3;
+ float heat=.2+.46*f+.34*edge*(.55+.45*f)+(w-.5)*.12;
+ heat=clamp(heat,0.,1.)+(h(gl_FragCoord.xy)-.5)/200.;
+ vec3 col=hue(pal(heat),(sin(t*.17)*.45+(w-.5)*.5)*mix(1.,.4,lt));
  col=clamp(col,0.,1.);
  gl_FragColor=vec4(col*a,a);
 }`;
@@ -78,12 +82,19 @@ void main(){
     if (svg) {
       const vb = svg.viewBox.baseVal, s = Math.min(g.w / vb.width, g.h / vb.height) * sc;
       x.setTransform(s, 0, 0, s, pad * sc + (g.w * sc - vb.width * s) / 2 - vb.x * s, pad * sc + (g.h * sc - vb.height * s) / 2 - vb.y * s);
+      // Bitişik parçaların arasında ince ek izi kalmasın diye her parça ince bir çizgiyle de kapatılır
+      x.strokeStyle = '#fff'; x.lineJoin = 'round'; x.lineWidth = 0.6 / s;
       svg.querySelectorAll('path,polygon,rect,circle').forEach(n => {
-        if (n.tagName === 'rect') return x.fillRect(+n.getAttribute('x') || 0, +n.getAttribute('y') || 0, +n.getAttribute('width'), +n.getAttribute('height'));
-        if (n.tagName === 'circle') { x.beginPath(); x.arc(+n.getAttribute('cx'), +n.getAttribute('cy'), +n.getAttribute('r'), 0, 7); return x.fill(); }
-        let d = n.getAttribute('d');
-        if (!d) { const p = n.getAttribute('points').trim().split(/[\s,]+/).map(Number); d = 'M' + p.join(' ') + 'Z'; }
-        x.fill(new Path2D(d));
+        const A = k => +n.getAttribute(k) || 0;
+        let P;
+        if (n.tagName === 'rect') { P = new Path2D(); P.rect(A('x'), A('y'), A('width'), A('height')); }
+        else if (n.tagName === 'circle') { P = new Path2D(); P.arc(A('cx'), A('cy'), A('r'), 0, Math.PI * 2); }
+        else {
+          let d = n.getAttribute('d');
+          if (!d) { const p = n.getAttribute('points').trim().split(/[\s,]+/).map(Number); d = 'M' + p.join(' ') + 'Z'; }
+          P = new Path2D(d);
+        }
+        x.fill(P); if (n.tagName !== 'rect' && n.tagName !== 'circle') x.stroke(P);
       });
     } else {
       // Metin: CSS satır kutusundaki taban çizgisini yeniden kur
@@ -102,10 +113,10 @@ void main(){
     const px = x.getImageData(0, 0, W, H).data, a = new Float32Array(W * H);
     for (let i = 0; i < W * H; i++) a[i] = px[i * 4 + 3] / 255;
     // Kenar kalınlığı: şeklin kendi kalınlığına göre (ortalama doluluktan kestirim)
-    const r1 = Math.max(1, Math.round(L * 0.011 * k));
-    const gb = blur(a, W, H, r1);
+    const gb = blur(a, W, H, Math.max(1, Math.round(L * 0.024 * k)));
+    const bb = blur(a, W, H, Math.max(1, Math.round(L * 0.010 * k)));
     const rgba = new Uint8Array(W * H * 4);
-    for (let i = 0; i < W * H; i++) { rgba[i * 4] = a[i] * 255; rgba[i * 4 + 1] = Math.min(1, gb[i]) * 255; rgba[i * 4 + 3] = 255; }
+    for (let i = 0; i < W * H; i++) { rgba[i * 4] = a[i] * 255; rgba[i * 4 + 1] = Math.min(1, gb[i]) * 255; rgba[i * 4 + 2] = Math.min(1, bb[i]) * 255; rgba[i * 4 + 3] = 255; }
     return { rgba, W, H, pad };
   }
 
