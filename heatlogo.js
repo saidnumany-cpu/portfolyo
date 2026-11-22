@@ -68,9 +68,9 @@ void main(){
     return { x: 0, y: 0, w: el.offsetWidth, h: el.offsetHeight };
   }
 
-  function mask(el, svg, g, k) {
+  function mask(el, svg, g, k, L) {
     const pad = PAD * Math.min(g.w, g.h);
-    const L = 512, sc = L / Math.max(g.w + 2 * pad, g.h + 2 * pad);
+    L = L || 512; const sc = L / Math.max(g.w + 2 * pad, g.h + 2 * pad);
     const W = Math.max(8, Math.round((g.w + 2 * pad) * sc)), H = Math.max(8, Math.round((g.h + 2 * pad) * sc));
     const c = document.createElement('canvas'); c.width = W; c.height = H;
     const x = c.getContext('2d');
@@ -147,15 +147,18 @@ void main(){
     const place = () => {
       const g = geom(el, svg);
       if (!g.w || !g.h) return;
-      const key = g.w + 'x' + g.h + (svg ? '' : getComputedStyle(el).font);
+      // Maske çözünürlüğü ekrandaki piksel boyutuna eşit: küçültürken pikselleşme olmaz
+      const d = Math.min(3, devicePixelRatio || 1);
+      const L = Math.max(96, Math.min(1024, Math.round(Math.max(g.w, g.h) * 1.1 * d)));
+      const key = g.w + 'x' + g.h + '@' + L + (svg ? '' : getComputedStyle(el).font);
       if (key !== lastKey) {
         lastKey = key;
-        m = mask(el, svg, g, k);
+        m = mask(el, svg, g, k, L);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, m.W, m.H, 0, gl.RGBA, gl.UNSIGNED_BYTE, m.rgba);
       }
       const cw = g.w + 2 * m.pad, ch = g.h + 2 * m.pad;
       Object.assign(cv.style, { left: g.x - m.pad + 'px', top: g.y - m.pad + 'px', width: cw + 'px', height: ch + 'px' });
-      const d = Math.min(2, devicePixelRatio || 1), s = Math.min(1, 1400 / Math.max(cw * d, ch * d));
+      const s = Math.min(1, 1400 / Math.max(cw * d, ch * d));
       const pw = Math.round(cw * d * s), ph = Math.round(ch * d * s);
       if (cv.width !== pw || cv.height !== ph) { cv.width = pw; cv.height = ph; }
       gl.viewport(0, 0, pw, ph);

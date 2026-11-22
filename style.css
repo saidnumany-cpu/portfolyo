@@ -9,6 +9,7 @@
   --paper: #F4F2ED; --panel: #E7E3DA; --alt: #ECE9E2; --ink: #111110; --ink2: #3A3934; --mute: #6E6B64; --line: #D3CEC4; --acc: #2350F0;
   --navbg: rgba(244,242,237,.86); --dark: #111110; --onDark: #F4F2ED; --shadow: rgba(0,0,0,.12); --outline: #8F8B82;
   color-scheme: light;
+  --heat: linear-gradient(90deg, #2A1BD6, #7F2AF2, #ED3D9E, #FF6A3D, #FF9A3C, #FF6A3D, #ED3D9E, #7F2AF2, #2A1BD6);
   --pad: clamp(20px, 4.4vw, 64px);
   --disp: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'IDisp', 'Inter', system-ui, sans-serif;
   --text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
@@ -17,6 +18,7 @@
   --paper: #121211; --panel: #1C1C1A; --alt: #171716; --ink: #EEEBE4; --ink2: #BDB9B0; --mute: #8D897F; --line: #2D2C29; --acc: #6F8CFF;
   --navbg: rgba(18,18,17,.82); --dark: #0A0A09; --onDark: #F4F2ED; --shadow: rgba(0,0,0,.45); --outline: #CFCBC1;
   color-scheme: dark;
+  --heat: linear-gradient(90deg, #2A1BD6, #7F2AF2, #ED3D9E, #FF7F47, #FFE9BC, #FF7F47, #ED3D9E, #7F2AF2, #2A1BD6);
 }
 html { transition: background-color .3s; }
 body { transition: background-color .3s, color .3s; }
@@ -54,7 +56,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .nav nav { display: flex; gap: 26px; margin-left: auto; font-size: 14.5px; font-weight: 500; }
 .nav nav a { color: var(--ink2); position: relative; }
 .nav nav a:hover, .nav nav a.on { color: var(--ink); }
-.nav nav a.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--acc); }
+.nav nav a.on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--heat) 0 0 / 600px 100% repeat-x; animation: heatflow 7s linear infinite; }
 .menu { display: none; width: 36px; height: 36px; flex-direction: column; justify-content: center; gap: 6px; padding: 8px; }
 .menu span { display: block; height: 2px; background: var(--ink); transition: transform .25s; }
 
@@ -180,7 +182,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 /* footer */
 .footer { background: var(--alt); color: var(--ink); border-top: 1px solid var(--line); padding: clamp(64px, 9vw, 120px) var(--pad) 32px; }
 .footer h2 { font-size: clamp(48px, 8vw, 120px); letter-spacing: -0.045em; }
-.mail { display: inline-flex; gap: 14px; margin-top: 28px; font-family: var(--disp); font-size: clamp(22px, 3vw, 40px); font-weight: 500; border-bottom: 2px solid var(--acc); padding-bottom: 4px; }
+.mail { display: inline-flex; gap: 14px; margin-top: 28px; font-family: var(--disp); font-size: clamp(22px, 3vw, 40px); font-weight: 500; padding-bottom: 6px; background: var(--heat) 0 100% / 600px 2px repeat-x; animation: heatflow 7s linear infinite; }
 .mail span { color: var(--acc); }
 .contact { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 64px; border-top: 1px solid var(--line); }
 .contact a { padding: 18px 12px 0 0; font-size: 16px; font-weight: 500; }
@@ -380,3 +382,7 @@ html.intro-ready body::after { display: none; }
 .intro-ov.go .intro-logo { animation: introIn 1.3s cubic-bezier(.2,.7,.2,1) both; }
 .intro-ov.out .intro-logo { transform: scale(1.04); transition: transform .6s ease; }
 @keyframes introIn { from { opacity: 0; transform: scale(.94); } }
+
+/* ısı haritası çizgileri: akan gradyan */
+@keyframes heatflow { to { background-position-x: 600px; } }
+@media (prefers-reduced-motion: reduce) { .mail, .nav nav a.on::after { animation: none; } }
