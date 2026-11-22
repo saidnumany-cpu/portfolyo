@@ -1,6 +1,28 @@
 {
   "cleanUrls": true,
   "headers": [
-    { "source": "/(img|fonts)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+    {
+      "source": "/(img|fonts)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/stabilizasyon-testi",
+      "destination": "https://stabilizasyon-testi.vercel.app/"
+    },
+    {
+      "source": "/stabilizasyon-testi/",
+      "destination": "https://stabilizasyon-testi.vercel.app/"
+    },
+    {
+      "source": "/stabilizasyon-testi/:path*",
+      "destination": "https://stabilizasyon-testi.vercel.app/:path*"
+    }
   ]
 }
