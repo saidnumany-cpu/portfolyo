@@ -63,21 +63,10 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 /* hero */
 .hero { background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--line); padding: 34px var(--pad) 72px; }
 .hero-top { display: flex; justify-content: space-between; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); padding-bottom: 14px; border-bottom: 1px solid var(--line); }
-.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; margin-top: 56px; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; margin-top: 56px; }
 .hero h1.name { font-family: 'ArchivoX', var(--disp); font-weight: 800; font-stretch: 125%; font-size: clamp(42px, 5.9vw, 98px); line-height: .94; letter-spacing: -0.025em; text-align: left; }
 .hero h1.name .dot { color: var(--acc); }
 .hero-txt p { margin-top: 28px; font-size: clamp(16px, 1.4vw, 19px); color: var(--ink2); max-width: 520px; }
-/* kelime bulutu: kelimeler kutu genişliğine göre ölçeklenir (cqi), konumlar tools/cloud.py ile hesaplandı */
-.cloud { position: relative; width: 100%; aspect-ratio: 5 / 4; container-type: inline-size; }
-.w { position: absolute; left: var(--x); top: var(--y); translate: -50% -50%; font-size: calc(var(--s) * 1cqi); white-space: nowrap; font-family: var(--disp); font-weight: 600; letter-spacing: -0.035em; line-height: 1; color: var(--ink); transition: color .25s, -webkit-text-stroke-color .25s; animation: drift var(--t, 8s) ease-in-out var(--d, 0s) infinite alternate, rise 1s cubic-bezier(.2,.7,.2,1) both; }
-.w.acc { color: var(--acc); }
-.w.mute { color: var(--mute); font-weight: 500; }
-/* SF'de harflerin iç parçaları üst üste biniyor; kontur önce çizilip üstü zemin rengiyle doldurulunca iç çizgiler kapanıyor */
-.w.out { color: var(--paper); -webkit-text-stroke: max(1.6px, .05em) var(--outline); paint-order: stroke fill; }
-.w:hover { color: var(--acc); -webkit-text-stroke-color: var(--acc); z-index: 1; }
-.w.out:hover { color: var(--paper); }
-@keyframes drift { 0% { transform: translate(0, 0) rotate(0deg); } 50% { transform: translate(calc(var(--dx) * .6), var(--dy)) rotate(.6deg); } 100% { transform: translate(var(--dx), calc(var(--dy) * -.4)) rotate(-.4deg); } }
-@keyframes rise { from { opacity: 0; } }
 
 /* sections */
 .section { padding: clamp(64px, 9vw, 128px) var(--pad); }
@@ -205,7 +194,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
 .reveal.in { opacity: 1; transform: none; }
 .no-js .reveal { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .w { animation: none; } html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 
 /* responsive */
 @media (max-width: 1100px) {
