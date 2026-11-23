@@ -60,7 +60,6 @@ chips.forEach(c => c.addEventListener('click', () => {
   if (more) more.hidden = ![...more.querySelectorAll('.pcard')].some(c => !c.classList.contains('hide'));
 }));
 
-// Görsel büyütme
 // Yıl ve sınıf kendiliğinden güncellensin (Eylül 2024 girişli, 4 yıllık)
 (() => {
   const d = new Date(), y = d.getFullYear();
@@ -73,6 +72,7 @@ chips.forEach(c => c.addEventListener('click', () => {
   });
 })();
 
+// Görsel büyütme
 const lb = document.querySelector('.lightbox');
 const lbImg = lb.querySelector('img');
 const lbCap = lb.querySelector('.lb-cap');
