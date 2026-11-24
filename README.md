@@ -6,7 +6,7 @@ Herhangi bir derleme adımı yok; düz HTML, CSS ve JavaScript. Vercel'e bağlan
 
 ## Yapı
 
-- `index.html` / `en/index.html` — ana sayfa (TR / EN). Çalışmalar bölümünde 5 öne çıkan iş tam boy, kalanlar "Diğer çalışmalar" ızgarasında
+- `index.html` / `en/index.html` — ana sayfa (TR / EN). Çalışmalar bölümünde 5 öne çıkan iş ve "Diğer çalışmalar" kartları yana kayan şeritlerde (oklar `main.js` ile eklenir)
 - `calismalar/<proje>.html` / `en/calismalar/<proje>.html` — her projenin kendi sayfası (adres: `/calismalar/<proje>`)
 - `sergiler/<sergi>.html` / `en/sergiler/<sergi>.html` — sergi sayfaları; ana sayfadaki "Sergiler" listesinden bağlanır
 - `404.html` — bulunamayan sayfa

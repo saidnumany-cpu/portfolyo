@@ -98,3 +98,45 @@ document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('cli
   window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   history.replaceState(null, '', location.pathname + location.search);
 }));
+
+// Çalışmalar: aşağı değil yana kayan şeritler
+(() => {
+  const en = document.documentElement.lang === 'en';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.projects, .pgrid').forEach(track => {
+    track.classList.add('track');
+    const ctl = document.createElement('div');
+    ctl.className = 'tctl';
+    ctl.innerHTML = `<div class="tbar" aria-hidden="true"><span></span></div><button class="tbtn" type="button" aria-label="${en ? 'Previous' : 'Önceki'}">←</button><button class="tbtn" type="button" aria-label="${en ? 'Next' : 'Sonraki'}">→</button>`;
+    track.after(ctl);
+    const [prev, next] = ctl.querySelectorAll('button');
+    const bar = ctl.querySelector('.tbar span');
+    const step = dir => {
+      const items = [...track.children].filter(c => !c.classList.contains('hide'));
+      const w = items[1] ? items[1].offsetLeft - items[0].offsetLeft : track.clientWidth;
+      const n = Math.max(1, Math.floor((track.clientWidth - parseFloat(getComputedStyle(track).paddingLeft)) / w));
+      track.scrollBy({ left: dir * w * n, behavior: reduce ? 'auto' : 'smooth' });
+    };
+    prev.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      ctl.hidden = max <= 2;
+      if (max <= 2) return;
+      const vis = track.clientWidth / track.scrollWidth;
+      bar.style.width = vis * 100 + '%';
+      bar.style.transform = `translateX(${(track.scrollLeft / max) * (1 / vis - 1) * 100}%)`;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max - 2;
+    };
+    track._update = update;
+    track.addEventListener('scroll', update, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(update).observe(track);
+    addEventListener('resize', update);
+    update();
+  });
+  // filtre değişince şeritleri başa sar
+  document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => {
+    document.querySelectorAll('.track').forEach(t => { t.scrollLeft = 0; t._update && t._update(); });
+  }));
+})();

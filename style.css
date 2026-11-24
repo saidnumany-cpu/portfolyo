@@ -376,3 +376,45 @@ html.intro-ready body::after { display: none; }
 /* ısı haritası çizgileri: akan gradyan */
 @keyframes heatflow { to { background-position-x: 600px; } }
 @media (prefers-reduced-motion: reduce) { .mail, .nav nav a.on::after { animation: none; } }
+
+/* yatay kaydırmalı çalışmalar (öne çıkanlar + diğer çalışmalar) */
+.track { display: flex; gap: clamp(16px, 2vw, 28px); overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(-1 * var(--pad)); padding: 6px var(--pad) 10px; scroll-padding-inline: var(--pad); }
+.track::-webkit-scrollbar { display: none; }
+.track > * { scroll-snap-align: start; }
+.track > .reveal { opacity: 1; transform: none; }
+.projects.track > .project { flex: 0 0 min(88%, 1240px); grid-template-columns: minmax(260px, 340px) 1fr; padding: 24px 0 0; border-top: 1px solid var(--line); }
+.projects.track > .project.hide { display: none; }
+.projects.track .p-txt { position: static; }
+.projects.track .p-vis { min-height: 0; align-self: stretch; }
+.projects.track .p-vis img { max-height: min(56vh, 520px); width: auto; object-fit: contain; }
+.pgrid.track { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: clamp(220px, 22vw, 300px); }
+.tctl { display: flex; align-items: center; gap: 10px; margin-top: 18px; }
+.tctl[hidden] { display: none; }
+.tbar { flex: 1; height: 2px; background: var(--line); overflow: hidden; margin-right: 10px; }
+.tbar span { display: block; height: 100%; width: 100%; background: var(--ink); transition: transform .15s linear; }
+.tbtn { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--ink); display: grid; place-items: center; font-size: 18px; line-height: 1; color: var(--ink); transition: background .2s, color .2s, opacity .2s; }
+.tbtn:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.tbtn:disabled { opacity: .25; cursor: default; }
+@media (max-width: 1100px) {
+  .projects.track > .project { flex-basis: 86%; grid-template-columns: 1fr; gap: 22px; }
+  .projects.track .p-txt { max-width: none; }
+  .projects.track .p-vis img { max-height: 46vh; }
+}
+@media (max-width: 600px) {
+  .projects.track > .project { flex-basis: 88%; }
+  .projects.track .p-txt h3 { font-size: 30px; margin-bottom: 12px; }
+  .projects.track .p-txt p { font-size: 15px; }
+  .projects.track .p-vis.two { grid-template-columns: 1fr 1fr; }
+  .projects.track .p-vis img { max-height: 40vh; }
+  .pgrid.track { grid-template-columns: none; grid-auto-columns: 62%; gap: 14px; }
+  .tbtn { width: 40px; height: 40px; }
+}
+@media (max-width: 1100px) {
+  .projects.track { align-items: flex-start; }
+  .projects.track .p-vis { align-self: auto; }
+}
+@media (max-width: 600px) {
+  .projects.track .p-vis.book { grid-template-columns: 2.1fr 1fr 1fr .5fr; gap: 10px; }
+  .projects.track .p-vis.book figure:first-child { grid-column: auto; }
+  .projects.track .p-vis.book figcaption { display: none; }
+}
