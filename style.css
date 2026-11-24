@@ -431,3 +431,18 @@ html.intro-ready body::after { display: none; }
   .pcard.feat .pc-img img { object-fit: contain; }
   .pcard.feat .pc-t { font-size: 18px; }
 }
+
+/* alttaki yüzen sosyal bar (Instagram sekme barı tarzı) */
+.sbar { position: fixed; left: 50%; bottom: calc(14px + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60; display: flex; gap: 4px; padding: 6px; border-radius: 100px; background: color-mix(in srgb, var(--paper) 70%, transparent); -webkit-backdrop-filter: blur(22px) saturate(180%); backdrop-filter: blur(22px) saturate(180%); border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); box-shadow: 0 10px 34px var(--shadow), inset 0 1px 0 color-mix(in srgb, #fff 18%, transparent); }
+.sbar a { width: 64px; height: 48px; border-radius: 100px; display: grid; place-items: center; color: var(--ink); transition: background .2s, transform .2s; }
+.sbar a:hover, .sbar a:focus-visible { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+.sbar a:active { transform: scale(.92); }
+.sbar svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.sbar svg .fill { fill: currentColor; stroke: none; }
+body.has-sbar { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+html.intro .sbar { opacity: 0; }
+.sbar { transition: opacity .4s; }
+@media (max-width: 600px) {
+  .sbar { width: calc(100% - 64px); max-width: 360px; justify-content: space-between; padding: 7px; }
+  .sbar a { flex: 1; height: 52px; }
+}

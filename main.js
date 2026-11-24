@@ -140,3 +140,17 @@ document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('cli
     document.querySelectorAll('.track').forEach(t => { t.scrollLeft = 0; t._update && t._update(); });
   }));
 })();
+
+// Alttaki yüzen sosyal bar
+(() => {
+  const en = document.documentElement.lang === 'en';
+  const bar = document.createElement('nav');
+  bar.className = 'sbar';
+  bar.setAttribute('aria-label', en ? 'Social accounts' : 'Sosyal hesaplar');
+  bar.innerHTML = `
+    <a href="https://instagram.com/saidnumany" target="_blank" rel="noopener" aria-label="Instagram @saidnumany" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle class="fill" cx="17.4" cy="6.6" r="1.25"/></svg></a>
+    <a href="https://www.linkedin.com/in/saidnumany/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16.5M12 16.5V10.5M12 13.2c0-1.6 1-2.7 2.4-2.7S16.5 11.6 16.5 13v3.5"/><circle class="fill" cx="8" cy="7.6" r="1.2"/></svg></a>
+    <a href="mailto:saidnumany@gmail.com" aria-label="${en ? 'Email' : 'E-posta'}: saidnumany@gmail.com" title="${en ? 'Email' : 'E-posta'}"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.8" y="5" width="18.4" height="14" rx="3.5"/><path d="M3.5 7.5l7.4 5.4a1.9 1.9 0 0 0 2.2 0l7.4-5.4"/></svg></a>`;
+  document.body.appendChild(bar);
+  document.body.classList.add('has-sbar');
+})();
