@@ -112,7 +112,7 @@ document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('cli
     const [prev, next] = ctl.querySelectorAll('button');
     const bar = ctl.querySelector('.tbar span');
     const step = dir => {
-      const items = [...track.children].filter(c => !c.classList.contains('hide'));
+      const items = [...track.children].filter(c => c.getClientRects().length);
       const w = items[1] ? items[1].offsetLeft - items[0].offsetLeft : track.clientWidth;
       const n = Math.max(1, Math.floor((track.clientWidth - parseFloat(getComputedStyle(track).paddingLeft)) / w));
       track.scrollBy({ left: dir * w * n, behavior: reduce ? 'auto' : 'smooth' });

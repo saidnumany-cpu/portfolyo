@@ -418,3 +418,16 @@ html.intro-ready body::after { display: none; }
   .projects.track .p-vis.book figure:first-child { grid-column: auto; }
   .projects.track .p-vis.book figcaption { display: none; }
 }
+
+/* mobil: öne çıkanlar + diğer çalışmalar tek kart şeridinde */
+.pcard.feat { display: none; }
+@media (max-width: 860px) {
+  .projects, .projects + .tctl { display: none !important; }
+  .pcard.feat { display: flex; }
+  .pcard.feat.hide { display: none; }
+  .more { border-top: 0; margin-top: 0; padding-top: 4px; }
+  .more-head { display: none; }
+  .pcard.feat .pc-img { aspect-ratio: 1; }
+  .pcard.feat .pc-img img { object-fit: contain; }
+  .pcard.feat .pc-t { font-size: 18px; }
+}
