@@ -443,6 +443,11 @@ body.has-sbar { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
 html.intro .sbar { opacity: 0; }
 .sbar { transition: opacity .4s; }
 @media (max-width: 600px) {
-  .sbar { width: calc(100% - 64px); max-width: 360px; justify-content: space-between; padding: 7px; }
-  .sbar a { flex: 1; height: 52px; }
+  .sbar { padding: 4px; gap: 2px; bottom: calc(12px + env(safe-area-inset-bottom)); }
+  .sbar a { width: 54px; height: 40px; }
+  .sbar svg { width: 22px; height: 22px; }
+  body.has-sbar { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
 }
+.sbar { transform-origin: 50% 100%; transition: opacity .4s, transform .35s cubic-bezier(.2,.7,.2,1); }
+.sbar.mini { transform: translateX(-50%) scale(.78); }
+@media (prefers-reduced-motion: reduce) { .sbar { transition: opacity .2s; } }

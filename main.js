@@ -154,3 +154,15 @@ document.querySelectorAll('a[href="#top"]').forEach(a => a.addEventListener('cli
   document.body.appendChild(bar);
   document.body.classList.add('has-sbar');
 })();
+
+// Kaydırırken sosyal bar küçülsün, durunca eski hâline dönsün
+(() => {
+  const bar = document.querySelector('.sbar');
+  if (!bar) return;
+  let t;
+  addEventListener('scroll', () => {
+    bar.classList.add('mini');
+    clearTimeout(t);
+    t = setTimeout(() => bar.classList.remove('mini'), 450);
+  }, { passive: true });
+})();
