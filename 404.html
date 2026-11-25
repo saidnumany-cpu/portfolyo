@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Boşluğa düştü · voidbysaid</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4F2ED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;})();</script>
+<link rel="stylesheet" href="/style.css">
+<style>
+  html, body { height: 100%; }
+  body { overflow: hidden; }
+  .v-wrap { position: relative; min-height: 100svh; display: grid; grid-template-rows: auto 1fr auto; padding: 18px var(--pad); }
+  .v-top { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--mute); position: relative; z-index: 3; }
+  .v-top .brand svg { width: 34px; height: 34px; margin: 0; }
+  .v-top .brand .bt { font-size: 16px; }
+
+  .v-stage { position: relative; display: grid; place-items: center; text-align: center; }
+  .v-code { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: clamp(6px, 1.5vw, 20px);
+    font-family: var(--disp); font-weight: 800; font-size: clamp(104px, 20vw, 280px); line-height: .8; letter-spacing: -0.04em; user-select: none; }
+  .v-code .d { display: inline-block; animation: tug 6s ease-in-out infinite; }
+  .v-code .d:last-child { animation-direction: reverse; }
+  @keyframes tug { 0%,100% { transform: translateX(0) skewX(0); } 50% { transform: translateX(var(--pull, 6px)) skewX(var(--sk, -4deg)); } }
+  .v-code .d:first-child { --pull: 10px; --sk: -6deg; }
+  .v-code .d:last-child { --pull: -10px; --sk: 6deg; }
+
+  /* boşluk: ortadaki "0" */
+  .void { position: relative; width: .78em; height: .78em; flex: none; }
+  .void .core { position: absolute; inset: 14%; border-radius: 50%; background: #000; box-shadow: 0 0 0 2px var(--acc), 0 0 60px 6px color-mix(in srgb, var(--acc) 35%, transparent); }
+  .void .core svg { display: block; width: 100%; height: 100%; fill: #000; }
+  .void .core[data-heat] { background: transparent; }
+  .void .ring { position: absolute; inset: -6%; border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0 20%, var(--acc) 32%, transparent 48%, transparent 62%, var(--ink) 74%, transparent 88%);
+    -webkit-mask: radial-gradient(circle, transparent 52%, #000 54%, #000 62%, transparent 70%); mask: radial-gradient(circle, transparent 52%, #000 54%, #000 62%, transparent 70%);
+    filter: blur(1.5px); opacity: .85; animation: spin 7s linear infinite; }
+  .void .ring.r2 { inset: -22%; opacity: .35; animation-duration: 13s; animation-direction: reverse; }
+  @keyframes spin { to { transform: rotate(1turn); } }
+
+  .v-txt { position: relative; z-index: 2; margin: clamp(28px, 5vh, 48px) auto 0; max-width: 520px; }
+  .v-txt h1 { font-size: clamp(24px, 3.2vw, 36px); }
+  .v-txt p { color: var(--ink2); margin-top: 12px; font-size: 15.5px; }
+  .v-path { display: inline-block; margin-top: 14px; font: 500 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--mute); padding: 6px 12px; border: 1px dashed var(--line); border-radius: 100px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top; }
+  .v-path s { text-decoration-color: var(--acc); text-decoration-thickness: 2px; }
+  .v-txt .links { justify-content: center; }
+  .v-txt .pill.ghost { background: var(--paper); }
+  .v-txt .pill.ghost:hover { background: var(--ink); }
+
+  .v-foot { position: relative; z-index: 3; display: flex; justify-content: space-between; font-size: 12.5px; color: var(--mute); }
+
+  @media (max-width: 640px) { .v-code { font-size: 27vw; } }
+  @media (prefers-reduced-motion: reduce) {
+    .v-code .d, .void .ring { animation: none; }
+  }
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<div class="v-wrap">
+  <header class="v-top">
+    <a class="brand" data-heat href="/" aria-label="voidbysaid — ana sayfa"><svg xmlns="http://www.w3.org/2000/svg" viewBox="170 175 740 740" fill="currentColor" aria-hidden="true"><path d="M717.5,604.9h-7.1v-85.5h7.1v33.9q3.5-5.7,9.5-8.7t12.5-2.9,12.2,2.7,8.5,7.1,5.1,10.4,1.6,12.4-1.5,12.7-5,10.3-8.6,6.8-12.7,2.5q-2.9,0-6-.8-3.1-.9-6-2.4-2.9-1.6-5.4-3.9-2.4-2.3-4-5.4h-.2V604.9ZM717.5,573.9q0,5.6,1.4,10.4,1.3,4.8,4,8.3,2.6,3.5,6.5,5.6,3.9,2,8.9,2,4.5,0,8.3-1.6,3.8-1.6,6.7-4.7,2.8-3.1,4.4-7.6,1.6-4.4,1.6-10.2.3-5.9-.9-10.9-1.2-5.1-3.8-8.9-2.6-3.8-6.7-6-4.1-2.2-9.6-2.2-4.9,0-8.7,2.1-3.9,2.1-6.6,5.6-2.6,3.5-4.1,8.2Q717.5,568.7,717.5,573.9Z"/>
+<path d="M772.7,621.6q1.5.2,2.9.4t3.1.3,4.8-1.9,3.2-4.6,2.1-5.6,1.9-4.9l-23.9-61.9h8l19.7,52.9,19.7-52.9h7.7l-22.9,60.7q-2.1,5.8-4.1,10.4-2,4.7-4.2,7.9-2.2,3.3-4.8,5-2.7,1.8-6.4,1.8-1.9,0-3.6-.3-1.7-.2-3.2-.6V621.6Z"/>
+<path d="M194.6,296.8h61.5l43.6,154.4,44.5-154.4h58.8l-75.5,209.3h-57.8L194.6,296.8Z"/>
+<path d="M578.9,323.3q26.5,33.2,26.5,78.5t-26.5,78.9-80.4,32.7-80.5-32.7-26.5-78.9q0-45.3,26.5-78.5,26.5-33.2,80.5-33.2Q552.4,290.1,578.9,323.3ZM498.3,336.4q-24,0-37,17-12.9,16.9-12.9,48.4,0,31.5,12.9,48.6,13,17.1,37,17.1,24,0,36.9-17.1,12.8-17.1,12.8-48.6,0-31.4-12.8-48.4Q522.3,336.4,498.3,336.4Z"/>
+<path d="M885.4,223.5v282.6h-53.2v-29q-11.7,18.6-26.7,27.1t-37.3,8.4q-36.6,0-61.7-29.6-25.1-29.7-25.1-76.2,0-53.5,24.7-84.3,24.7-30.7,66-30.7,19,0,33.8,8.4,14.8,8.3,24,23.1v-99.8H885.4ZM737.9,402.8q0,29,11.5,46.3,11.3,17.5,34.6,17.5,23.2,0,35.3-17.3,12.1-17.3,12.1-44.8,0-38.4-19.4-54.9-11.9-10-27.6-10-24,0-35.3,18.2Q737.9,375.9,737.9,402.8Z"/>
+<polygon points="615.9 506.1 671.4 506.1 671.4 331.4 615.9 347.9 615.9 506.1"/>
+<polygon points="671.4 296.8 615.9 296.8 615.9 331.5 671.4 314.9 671.4 296.8"/>
+<path d="M380.9,649.7q24.6,15.8,28.2,54.2h-54.7q-1.2-10.6-6-16.7-9-11.2-30.7-11.2-17.8,0-25.4,5.6t-7.6,13.1q0,9.4,8.1,13.6,8,4.4,57,15.2,32.6,7.7,48.9,23.2,16.2,15.8,16.2,39.4,0,31.1-23.2,50.8-23.1,19.6-71.5,19.6-49.3,0-72.9-20.8-23.5-20.8-23.5-53.1h55.5q1.7,14.6,7.5,20.8,10.2,10.9,37.6,10.9,16.2,0,25.7-4.8,9.5-4.8,9.5-14.4,0-9.2-7.7-14-7.7-4.8-57-16.5-35.6-8.9-50.2-22.1-14.5-13.1-14.5-37.7,0-28.9,22.7-49.8,22.8-20.8,64-20.8Q356.1,634.2,380.9,649.7Z"/>
+<path d="M433.8,662.8q21.7-27.7,74.5-27.7,34.4,0,61,13.7t26.7,51.4v96.1q0,9.9.4,24.1.6,10.8,3.3,14.6,2.7,3.9,8,6.4v8h-59.5q-2.5-6.3-3.4-11.9-1-5.5-1.6-12.6-11.3,12.3-26.1,20.9-17.7,10.2-39.9,10.2-28.5,0-47-16.3-18.5-16.2-18.5-45.9,0-38.6,29.8-55.9,16.3-9.4,48-13.5l18.6-2.3q15.2-1.9,21.7-4.8,11.7-5,11.7-15.5,0-12.9-8.9-17.8-9-4.9-26.2-4.9-19.4,0-27.5,9.6-5.8,7.1-7.7,19.2h-52.8Q420.1,680.5,433.8,662.8ZM474.5,809.9q7.7,6.3,18.8,6.3,17.7,0,32.5-10.3,14.9-10.4,15.5-37.9v-20.3q-5.2,3.2-10.5,5.3-5.2,2-14.5,3.7l-12.2,2.3q-17.3,3.1-24.8,7.5-12.7,7.5-12.7,23.2Q466.6,803.7,474.5,809.9Z"/>
+<polygon points="615.9 850 671.4 850 671.4 675.3 615.9 691.8 615.9 850"/>
+<polygon points="671.4 640.7 615.9 640.7 615.9 675.4 671.4 658.8 671.4 640.7"/>
+<polygon points="885.4 442.5 829.9 442.5 829.9 470.2 829.9 635.3 885.4 635.3 885.4 442.5"/>
+<path d="M829.9,635.3v31.3q-9.2-14.7-24-23.1t-33.8-8.4q-41.3,0-66,30.8-24.7,30.7-24.7,84.3,0,46.4,25.1,76.1,25.1,29.7,61.7,29.7,22.3,0,37.3-8.5,15-8.4,26.7-27.1v29h53.2v-214.1H829.9ZM819.3,792.6q-12.1,17.3-35.3,17.3-23.3,0-34.6-17.5-11.5-17.3-11.5-46.3,0-26.8,11.2-45,11.3-18.1,35.3-18.1,15.7,0,27.6,9.9,19.4,16.6,19.4,55Q831.4,775.3,819.3,792.6Z"/></svg><span class="bt">voidbysaid</span></a>
+    <button class="theme" aria-label="Açık / koyu tema" title="Açık / koyu tema"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg></button>
+  </header>
+
+  <main class="v-stage" id="main">
+    <div>
+      <div class="v-code" aria-label="404"><span class="d" data-heat="1.6" aria-hidden="true">4</span><span class="void" aria-hidden="true"><span class="ring r2"></span><span class="ring"></span><span class="core" data-heat="1.8"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="50"/></svg></span></span><span class="d" data-heat="1.6" aria-hidden="true">4</span></div>
+      <div class="v-txt">
+        <h1 data-tr="Bu sayfa boşluğa düştü." data-en="This page fell into the void.">Bu sayfa boşluğa düştü.</h1>
+        <p data-tr="Aradığın şey ya hiç var olmadı ya da çoktan içeri çekildi. Merak etme, geri kalan her şey yerinde." data-en="Whatever you were looking for either never existed or got pulled in long ago. Don't worry — everything else is still here.">Aradığın şey ya hiç var olmadı ya da çoktan içeri çekildi. Merak etme, geri kalan her şey yerinde.</p>
+        <span class="v-path"><s></s></span>
+        <div class="links">
+          <a class="pill" href="/" data-home><span data-tr="Ana sayfaya dön" data-en="Back to home">Ana sayfaya dön</span><span class="arr" aria-hidden="true">↗</span></a>
+          <a class="pill ghost" href="/#calismalar" data-works><span data-tr="Çalışmalara bak" data-en="See the work">Çalışmalara bak</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="v-foot"><span>© 2026 voidbysaid</span><span>Error 404</span></footer>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  // Tema düğmesi
+  document.querySelector('.theme').addEventListener('click', function () {
+    var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  // Dil: /en/ altındaysa ya da en son İngilizce seçildiyse
+  var saved = null; try { saved = localStorage.getItem('lang'); } catch (e) {}
+  var en = /^\/en(\/|$)/.test(location.pathname) || saved === 'en';
+  if (en) {
+    root.lang = 'en';
+    document.title = '404 — Fell into the void · voidbysaid';
+    document.querySelectorAll('[data-en]').forEach(function (el) { el.textContent = el.dataset.en; });
+    document.querySelector('[data-home]').href = '/en/';
+    document.querySelector('[data-works]').href = '/en/#calismalar';
+    document.querySelector('.brand').href = '/en/';
+  }
+
+  // İstenen adres, üstü çizili
+  document.querySelector('.v-path s').textContent = decodeURIComponent(location.pathname + location.search);
+})();
+</script>
+<script src="/heatlogo.js" defer></script>
+</body>
+</html>
