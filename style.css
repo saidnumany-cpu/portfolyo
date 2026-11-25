@@ -6,16 +6,16 @@
 @font-face { font-family: 'IDisp'; src: url('/fonts/InterDisplay-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
 
 :root {
-  --paper: #F4F2ED; --panel: #E7E3DA; --alt: #ECE9E2; --ink: #111110; --ink2: #3A3934; --mute: #6E6B64; --line: #D3CEC4; --acc: #2350F0;
+  --paper: #F4F2ED; --panel: #E7E3DA; --alt: #ECE9E2; --ink: #111110; --ink2: #3A3934; --mute: #6E6B64; --line: #D3CEC4; --acc: #6A22D8;
   --navbg: rgba(244,242,237,.86); --dark: #111110; --onDark: #F4F2ED; --shadow: rgba(0,0,0,.12); --outline: #8F8B82;
   color-scheme: light;
   --heat: linear-gradient(90deg, #2A1BD6, #7F2AF2, #ED3D9E, #FF6A3D, #FF9A3C, #FF6A3D, #ED3D9E, #7F2AF2, #2A1BD6);
   --pad: clamp(20px, 4.4vw, 64px);
-  --disp: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'IDisp', 'Inter', system-ui, sans-serif;
-  --text: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+  --disp: 'IDisp', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --text: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 [data-theme="dark"] {
-  --paper: #121211; --panel: #1C1C1A; --alt: #171716; --ink: #EEEBE4; --ink2: #BDB9B0; --mute: #8D897F; --line: #2D2C29; --acc: #6F8CFF;
+  --paper: #121211; --panel: #1C1C1A; --alt: #171716; --ink: #EEEBE4; --ink2: #BDB9B0; --mute: #8D897F; --line: #2D2C29; --acc: #B08CFF;
   --navbg: rgba(18,18,17,.82); --dark: #0A0A09; --onDark: #F4F2ED; --shadow: rgba(0,0,0,.45); --outline: #CFCBC1;
   color-scheme: dark;
   --heat: linear-gradient(90deg, #2A1BD6, #7F2AF2, #ED3D9E, #FF7F47, #FFE9BC, #FF7F47, #ED3D9E, #7F2AF2, #2A1BD6);
@@ -214,9 +214,6 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
   .hero-grid { grid-template-columns: 1fr; margin-top: 36px; }
   .sec-head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .apps { grid-template-columns: 1fr; }
-  .ig { grid-template-columns: 1fr; }
-  .ig-frame { justify-self: stretch; }
-  .ig-frame iframe { height: 560px; }
   .about { grid-template-columns: 1fr; }
   .ab-photo { position: static; max-width: 420px; }
   .vrow { grid-template-columns: 28px 96px 1fr auto; gap: 0 14px; }
@@ -250,15 +247,7 @@ h1, h2, h3 { font-family: var(--disp); font-weight: 600; letter-spacing: -0.03em
 [data-theme="dark"] .theme .i-sun, :root:not([data-theme="dark"]) .theme .i-moon { opacity: 0; transform: scale(.6) rotate(-40deg); }
 
 /* instagram */
-.ig { display: grid; grid-template-columns: minmax(260px, .8fr) 1.2fr; gap: clamp(32px, 5vw, 80px); align-items: center; }
-.ig h2 { font-size: clamp(40px, 5vw, 76px); margin-bottom: 18px; }
-.ig-txt p { color: var(--ink2); font-size: 16.5px; line-height: 1.6; max-width: 420px; }
-.ig-frame { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 18px 40px var(--shadow); max-width: 640px; width: 100%; justify-self: end; }
-.ig-frame iframe { display: block; width: 100%; height: 620px; border: 0; }
 @media (max-width: 860px) {
-  .ig { grid-template-columns: 1fr; }
-  .ig-frame { justify-self: stretch; max-width: none; }
-  .ig-frame iframe { height: 520px; }
   .bt { display: none; }
   .brand svg { width: 38px; height: 38px; }
 }
@@ -432,18 +421,17 @@ html.intro-ready body::after { display: none; }
   .pcard.feat .pc-t { font-size: 18px; }
 }
 
-/* sağ altta dikey yüzen sosyal bar */
-.sbar { position: fixed; right: calc(16px + env(safe-area-inset-right)); bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 60; display: flex; flex-direction: column; gap: 2px; padding: 5px; border-radius: 100px; background: color-mix(in srgb, var(--paper) 70%, transparent); -webkit-backdrop-filter: blur(22px) saturate(180%); backdrop-filter: blur(22px) saturate(180%); border: 0.5px solid color-mix(in srgb, var(--ink) 9%, transparent); box-shadow: none; transform-origin: 100% 100%; transition: opacity .4s, transform .35s cubic-bezier(.2,.7,.2,1); }
-.sbar a { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; color: var(--ink); transition: background .2s, transform .2s; }
-.sbar a:hover, .sbar a:focus-visible { background: color-mix(in srgb, var(--ink) 10%, transparent); }
-.sbar a:active { transform: scale(.9); }
-.sbar svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-.sbar svg .fill { fill: currentColor; stroke: none; }
-html.intro .sbar { opacity: 0; }
-.sbar.mini { transform: scale(.82); }
-@media (max-width: 600px) {
-  .sbar { right: calc(12px + env(safe-area-inset-right)); bottom: calc(12px + env(safe-area-inset-bottom)); padding: 4px; }
-  .sbar a { width: 40px; height: 40px; }
-  .sbar svg { width: 20px; height: 20px; }
-}
-@media (prefers-reduced-motion: reduce) { .sbar { transition: opacity .2s; } }
+/* araçlar: yapay zekâ alt başlığı */
+.ab-grid h3.tsub { margin-top: 22px; }
+
+/* hero altı kayan çalışma isimleri */
+.ticker { overflow: hidden; border-bottom: 1px solid var(--line); background: var(--paper); padding: 18px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.tk-track { display: flex; width: max-content; animation: tk 70s linear infinite; }
+.ticker:hover .tk-track, .ticker:focus-within .tk-track { animation-play-state: paused; }
+.tk-set { display: flex; align-items: center; flex: none; }
+.ticker a { font-family: var(--disp); font-weight: 500; font-size: clamp(18px, 1.8vw, 26px); letter-spacing: -0.02em; color: var(--ink); white-space: nowrap; transition: color .2s; }
+.ticker a:hover, .ticker a:focus-visible { color: var(--acc); }
+.tk-sep { color: var(--acc); font-size: .7em; margin: 0 clamp(18px, 2vw, 32px); }
+@keyframes tk { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .tk-track { animation: none; } .ticker { overflow-x: auto; } }
+@media (min-width: 861px) { .pgrid { grid-template-columns: repeat(4, 1fr); } }
